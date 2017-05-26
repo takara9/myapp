@@ -27,9 +27,8 @@ myapp$ npm start
 
 http://hostname:3000/
 
-ログイン画面
-<img="docs/login.png"/>
+![ログイン画面](docs/login.png "ログイン画面")
 
 ログイン失敗時の画面
-<img="docs/flash_message.png"/>
+![ログイン失敗時の画面](docs/flash_message.png "ログイン失敗画面")
 
