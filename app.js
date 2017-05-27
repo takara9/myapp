@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,14 +38,17 @@ app.use(session({
 }));
 app.use(flash());
 
-// CSS プリプロセッサ設定
+// パブリックエリア  CSS プリプロセッサ設定
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('./login'));  // ログイン　ミドルウェア
+// ログインしないと見えないエリア
+app.use(require('./login'));  // ログインのミドルウェア
 app.use('/', routes);         // ログイン画面、トップ画面送出
 app.use('/logout', routes);　 // ログアウト処理　POSTで対応
-app.use('/users', users);     // コンテンツ表示
+app.use('/users', users);     // 動的コンテンツ表示
+app.use('/private', express.static(path.join(__dirname, 'private')));  // 静的コンテンツ
+
 
 // catch 404 and forward to error handler
 // ログインしてない場合は、login.js で捕捉して、ログインページへ飛ばす
@@ -56,6 +59,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/:page', routes);　　// デフォルト設定
+
 
 // error handlers
 

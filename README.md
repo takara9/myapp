@@ -4,10 +4,10 @@ Node.js express application study
 
 **環境**
 
-~~~
-myapp$ node --version
-v4.4.7
-~~~
+- node バージョン: v4.4.7
+- express バージョン: 4.13.4
+
+
 
 **インストール**
 
@@ -36,4 +36,5 @@ http://hostname:3000/
 パスワードを間違えてログインに失敗して、フラッシュのエラーメッセージ表示
 
 ![ログイン失敗時の画面](docs/flash_message.png "ログイン失敗画面")
+
 

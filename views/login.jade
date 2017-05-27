@@ -1,8 +1,10 @@
 if user
+   p #{user.name}さん、こんにちは!	
+
    form(method='post', action='/logout')
      input(name='logout', type='hidden', value='DELETE')
-     p #{user.name}さん、こんにちは! 
-       a(href='javascript:', onClick='forms[0].submit()') [ログアウト]
+     a(href='javascript:', onClick='forms[0].submit()') [ログアウト]
+
 else
    p ログインしてください
    form(method='post', action='/')
