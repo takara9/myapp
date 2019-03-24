@@ -112,7 +112,7 @@ You can undo this operation for a limited period by running:
 
 ---
 
-## IBM Cloud CFアプリ(旧Bluemix PaaS)へのデプロイ
+## IBM Cloud Cloud Foundry (旧Bluemix PaaS)へのデプロイ
 
 IBM Cloud にアカウントがあり、パソコンにIBM Cloud CLI がインストールされているものとします。
 ibmcloudコマンドは、bx として短縮形を利用できるので、そちらを利用します。
@@ -155,3 +155,60 @@ takara-myapp5   started          1/1            1G         1G         takara-mya
 ~~~
 imac:myapp maho$ bx cf d takara-myapp5
 ~~~
+
+
+## アプリのセキュリティ アップデート
+
+GitHubのセキュリティ・スキャンで、シビリティの高い脆弱性が発見されたので、対策を実施するには、npm update を実行します。
+
+~~~
+imac:myapp maho$ npm update
+npm WARN deprecated jade@1.11.0: Jade has been renamed to pug, please install the latest version of pug instead of jade
+npm WARN deprecated transformers@2.1.0: Deprecated, use jstransformer
+npm WARN deprecated constantinople@3.0.2: Please update to at least constantinople 3.1.1
+npm notice created a lockfile as package-lock.json. You should commit this file.
++ debug@2.2.0
++ serve-favicon@2.3.2
++ express-session@1.15.6
++ cookie-parser@1.4.4
++ jade@1.11.0
++ express-flash@0.0.2
++ stylus@0.54.5
++ body-parser@1.15.2
++ express@4.13.4
++ morgan@1.7.0
++ express-handlebars@3.0.2
+added 145 packages from 168 contributors and audited 241 packages in 6.678s
+found 19 vulnerabilities (11 low, 3 moderate, 5 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+~~~
+
+対策を確認します。
+
+~~~
+imac:myapp maho$ npm audit fix
++ body-parser@1.18.3
++ serve-favicon@2.5.0
++ morgan@1.9.1
++ express@4.16.4
+added 18 packages from 7 contributors, removed 8 packages and updated 27 packages in 3.094s
+fixed 15 of 19 vulnerabilities in 241 scanned packages
+  3 vulnerabilities required manual review and could not be updated
+  1 package update for 1 vuln involved breaking changes
+  (use `npm audit fix --force` to install breaking changes; or refer to `npm audit` for steps to fix these manually)
+~~~
+
+
+GCP AppEngine に再登録
+
+~~~
+imac:myapp maho$ gcloud app deploy --project takara-0005
+~~~
+
+IBM Cloud Cloud Foundry に再登録
+
+~~~
+imac:myapp maho$ bx cf p takara-myapp5
+~~~
+
+
