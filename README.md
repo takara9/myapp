@@ -114,31 +114,43 @@ You can undo this operation for a limited period by running:
 
 ## IBM Cloud CFアプリ(旧Bluemix PaaS)へのデプロイ
 
+IBM Cloud にアカウントがあり、パソコンにIBM Cloud CLI がインストールされているものとします。
+ibmcloudコマンドは、bx として短縮形を利用できるので、そちらを利用します。
+
+IBM Cloud へのログイン
+
 ~~~
 imac:myapp maho$ bx login
 ~~~
+
+組織とスペースを対話で設定します。
 
 ~~~
 imac:myapp maho$ bx target --cf
 ~~~
 
+アプリケーション名takara-myapp5 を付与して、アプリケーションをデプロイします。
+
 ~~~
 imac:myapp maho$ bx cf push takara-myapp5
 ~~~
 
+実行状態を確認します。
+
 ~~~
 imac:myapp maho$ bx cf a
-'cf a' を起動しています...
-
-takara@jp.ibm.com として組織 takara@jp.ibm.com / スペース dev 内のアプリを取得しています...
-OK
-
+<中略>
 名前            要求された状態   インスタンス   メモリー   ディスク   URL
 takara-myapp5   started          1/1            1G         1G         takara-myapp5.mybluemix.net
 ~~~
 
+上記のURLアドレス https://takara-myapp5.mybluemix.net/ へアクセスすることで、アプリケーションを利用できます。
+
+
 
 ## IBM Cloud CFアプリからのクリーンナップ
+
+課金対象が外すために、削除するには、以下のコマンドを実行します。
 
 ~~~
 imac:myapp maho$ bx cf d takara-myapp5
