@@ -1,21 +1,21 @@
-# myapp
-Node.js express application study
+# node-express-login
+
+Node.jsのテスト用アプリケーションを
+Google Cloud Platform と IBM Cloud CloudFoundry App の両方で動かして確認したコードです。
 
 
 ## ローカル(MacOS)での実行
 
 **環境**
 
-- node バージョン: v4.4.7
-- express バージョン: 4.13.4
-
+- node バージョン: v4.4.7 以上
 
 
 **インストール**
 
 ~~~
-$ git clone https://github.com/takara9/myapp
-
+$ git clone https://github.com/takara9/node-express-login myapp
+$ cd myapp
 myapp$ npm install
 ~~~
 
