@@ -10,8 +10,8 @@ var session = require('express-session');
 var flash = require('express-flash');
 var handlebars = require('express-handlebars');
 var sessionStore = new session.MemoryStore;
-//
 
+// ルーター設定
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
