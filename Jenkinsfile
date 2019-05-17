@@ -47,7 +47,7 @@ podTemplate(
 	    stage 'setup yaml'
 	    sh 'cat k8s-deployment.yaml.tmpl |sed s/\'XXXXX\'/$BUILD_NUMBER/ > k8s-deployment-j.yaml'
             stage 'deploy'
-	    sh 'KUBECONFIG=/kubeconfig/kube-config-tok05-jk1.yml kubectl apply -f k8s-deployment-j.yaml'
+	    sh 'KUBECONFIG=/kubeconfig/kube-config-tok05-iks1.yml kubectl apply -f k8s-deployment-j.yaml'
           }
       }
     }
