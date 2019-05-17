@@ -8,7 +8,7 @@ podTemplate(
   ],
   volumes: [
     emptyDirVolume(memory: false, mountPath: '/var/lib/docker'),
-    configMapVolume(mountPath: '/kubeconfig', configMapName: 'kubeconfig')
+    configMapVolume(mountPath: '/kubeconfig', configMapName: 'kubeconfig-iks1')
   ]
 ) 
 {
@@ -41,7 +41,7 @@ podTemplate(
             stage 'version'
 	    sh 'kubectl version'
             stage 'get-cluster'
-	    sh 'KUBECONFIG=/kubeconfig/kube-config-tok05-jk1.yml kubectl get node'
+	    sh 'KUBECONFIG=/kubeconfig/kube-config-tok05-iks1.yml kubectl get node'
 	    stage 'stage-status'
             sh 'ls -al'
 	    stage 'setup yaml'
