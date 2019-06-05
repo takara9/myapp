@@ -7,7 +7,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: iks1.jp-tok.containers.appdomain.cloud
+  - host: login.iks1.jp-tok.containers.appdomain.cloud
     http:
       paths:
       - path: /
@@ -16,6 +16,6 @@ spec:
           servicePort: 3000
   tls:
   - hosts:
-    - iks1.jp-tok.containers.appdomain.cloud
+    - login.iks1.jp-tok.containers.appdomain.cloud
     secretName: iks1
     
